@@ -7,5 +7,9 @@ export default defineConfig({
   // 服务器选项
   server: {
     port: 8080   // 默认5173，比较难记，可更改为8080
-  }
+  },
+  // 公共基础路径
+  base: '/',    // 默认'/'，一般不需要改动
+  // 环境选项
+  mode: 'staging'
 })
