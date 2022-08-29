@@ -3,9 +3,18 @@ import vue from '@vitejs/plugin-vue'
 // 引入path
 import path from 'path'
 
+// 安装：npm i unplugin-auto-import
+// 引入自动引入的包  注意 后面加'/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    AutoImport({
+      imports:['vue']
+    })
+  ],
   // 服务器选项
   server: {
     port: 8080,   // 默认5173，比较难记，可更改为8080
