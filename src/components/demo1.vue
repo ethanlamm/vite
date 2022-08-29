@@ -13,4 +13,10 @@
 
 <script setup>
 import list from '@/assets/images/pic.js'
+
+// 配置代理后，测试接口
+import axios from 'axios'
+axios.get('/api/userInfo').then(data => {
+    console.log(data);
+})
 </script>

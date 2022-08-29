@@ -16,8 +16,11 @@ const router = new Router()
 app.use(router.routes())
 app.use(router.allowedMethods())
 
+// 设置路由前缀
+// router.prefix('/api')
+
 // 指定一个url匹配
-router.get('/', async (ctx) => {
+router.get('/userInfo', async (ctx) => {
     ctx.body = {
         name: 'zs',
         age:18

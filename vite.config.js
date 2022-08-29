@@ -8,7 +8,14 @@ export default defineConfig({
   plugins: [vue()],
   // 服务器选项
   server: {
-    port: 8080   // 默认5173，比较难记，可更改为8080
+    port: 8080,   // 默认5173，比较难记，可更改为8080
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        rewrite:(path)=>path.replace(/^\/api/,'')
+        // 是否重写(即不需要'/api')，取决于服务器设置的url是否包含'/api'
+      }
+    }
   },
   // 公共基础路径
   base: '/',    // 默认'/'，一般不需要改动
