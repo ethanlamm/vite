@@ -7,16 +7,6 @@ defineProps({
 
 const count = ref(0)
 
-// 环境变量的获取
-// vite：import.meta.env    <=>  webpackage：process.env
-console.log(import.meta.env);
-/**
- * import.meta.env(Object)
- *    .BASE_URL：vite.config.js  base选项
- *    .MODE：vite.config.js  mode选项
- *    .VITE_APP_BASE_API：与相应.env文件项对应
- *    .VITE_APP_BASE_URL：与相应.env文件项对应
- */
 </script>
 
 <template>
