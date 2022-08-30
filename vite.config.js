@@ -46,6 +46,17 @@ export default defineConfig({
         drop_console: true, // 生产环境移除console
         drop_debugger: true // 生产环境移除debugger
       }
-    }
+    },
+
+    // rollup打包配置
+    rollupOptions: {
+      // 打包输出文件夹配置
+      output: {
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: '[ext]/[name]-[hash].[ext]'
+      }
+    },
+
   },
 })
