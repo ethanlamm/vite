@@ -6,8 +6,11 @@ import path from 'path'
 // 安装：npm i unplugin-auto-import
 // 引入自动引入的包  注意 后面加'/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import Components from 'unplugin-vue-components/vite'
+// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
+// 引入CDN插件
+import { Plugin as importToCDN, autoComplete } from "vite-plugin-cdn-import"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,11 +18,28 @@ export default defineConfig({
     vue(),
     AutoImport({
       imports: ['vue'],
-      resolvers: [ElementPlusResolver()],
+      // resolvers: [ElementPlusResolver()],
     }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()],
+    // }),
+
+    // cdn 引入 element-plus
+    importToCDN({
+      modules: [
+        {
+          name: 'vue',
+          var: 'Vue',
+          path: 'https://unpkg.com/vue@next'
+        },
+        {
+          name: 'element-plus',
+          var: 'ElementPlus',
+          path: `https://unpkg.com/element-plus`,
+          css: 'https://unpkg.com/element-plus/dist/index.css'
+        }
+      ]
+    })
   ],
   // 服务器选项
   server: {
