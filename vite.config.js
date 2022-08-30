@@ -19,7 +19,7 @@ export default defineConfig({
   server: {
     port: 8080,   // 默认5173，比较难记，可更改为8080
   },
-  
+
   // 公共基础路径
   // 默认'/'，为防止部署项目时发生资源路径访问错误的隐患，这里配置相对路径来避免
   base: './',
@@ -36,5 +36,16 @@ export default defineConfig({
       // 2.设置value时，必须是字符串，不能用path.resolve处理
       '/images': '/src/assets/images'
     }
-  }
+  },
+
+  // 构建选项
+  build: {
+    minify: 'terser', // 默认为esbuild，将模式改为'terser'，terserOptions才生效
+    terserOptions: {
+      compress: {
+        drop_console: true, // 生产环境移除console
+        drop_debugger: true // 生产环境移除debugger
+      }
+    }
+  },
 })
