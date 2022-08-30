@@ -6,14 +6,20 @@ import path from 'path'
 // 安装：npm i unplugin-auto-import
 // 引入自动引入的包  注意 后面加'/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports:['vue']
-    })
+      imports: ['vue'],
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
   ],
   // 服务器选项
   server: {

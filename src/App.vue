@@ -16,6 +16,8 @@ console.log('开发时的调试');
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <!-- 按需引入，自动导入，直接使用即可，不需要手动引入 el-button -->
+  <el-button type="primary">按钮</el-button>
 </template>
 
 <style scoped>
