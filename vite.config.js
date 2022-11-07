@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports:['vue']
+      imports: ['vue']
     })
   ],
   // 服务器选项
@@ -21,7 +21,9 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
-        rewrite:(path)=>path.replace(/^\/api/,'')
+        // vite 需要加上，vue-cli3以上默认打开
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
         // 是否重写(即不需要'/api')，取决于服务器设置的url是否包含'/api'
       }
     }
